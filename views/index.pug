@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Palinindrome Checker
+  form(method="POST" action="/")
+    label(for="userText") Enter your name here:
+    br
+    input(type="text" id="userText" name="userText" value=`${phrase}`)
+    br
+    br
+    button(type="submit") Submit!
+    if message
+      p=message
+
+    h3 examples:
+    p racecar
+    p anna
+    p never odd or even
