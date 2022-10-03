@@ -12,11 +12,13 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res){
   res.render('index', {
     phrase: req.body.userText,
-    message: getResultDescription(req.body.userText)
+    message: getResultDescription(req.body.userText),
+    message2: reversePhrase(req.body.userText)
   })
 })
 
 function checkPalinindrome(phrase){
+  phrase = phrase.replace(/ |\?|\.|;|!|'|"|,|:/gi, "")
   let temp = phrase.split("");
   temp = temp.reverse();
   temp = temp.join("")
@@ -26,6 +28,13 @@ function checkPalinindrome(phrase){
   else {
     return false
   }
+}
+
+function reversePhrase(phrase){
+  let temp = phrase.split("");
+  temp = temp.reverse();
+  temp = temp.join("")
+  return temp
 }
 
 function getResultDescription (phrase){
